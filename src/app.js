@@ -19,4 +19,16 @@ app.use(cookieParser())
 
 //! (err,req,res,next)  --> next anedhi middleware  between client and server various checks will happen like authentication access. after the first check it will next telling my check is over 
 
+
+//Routes
+
+import userRouter from './routes/user.routes.js'
+
+
+//routes declaration
+// app.get() --> dont do 
+app.use("/api/v1/users",userRouter)
+
+// http://localhost:8000/api/v1/users/register
+
 export {app}
