@@ -1,5 +1,5 @@
 import { v2 as cloudinary } from 'cloudinary';
-import fs from 'fs'
+import fs, { unlinkSync } from 'fs'
 
 // Configuration
 cloudinary.config({
@@ -19,6 +19,7 @@ const uploadOnCloudinary = async (localFilePath) => {
 
         //File has been uploaded successfully
         console.log(`FILE UPLOADED ON CLOUDINARY SUCCESSFULLY ✅ , ${response.url}`);
+        fs,unlinkSync(localFilePath)
         return response;
     } catch (error) {
         fs.unlinkSync(localFilePath) //!Remove the locally saved temporary file it may be malicious also as the operation got failed 
