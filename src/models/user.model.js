@@ -77,7 +77,7 @@ userSchema.methods.isPasswordCorrect = async function (password) {
 }
 
 userSchema.methods.generateAccessToken = function () {
-    jwt.sign({
+    return jwt.sign({
         _id: this._id, //mongodb lo untadhi
         email: this.username,
         fullName: this.fullName,
@@ -92,7 +92,7 @@ userSchema.methods.generateAccessToken = function () {
 //! Refresh token lo information thakkuva untaadhi because multiple times refresh
 userSchema.methods.generateRefreshToken = function () {
 
-    jwt.sign({
+    return jwt.sign({
         _id: this._id, //mongodb lo untadhi
     },
         process.env.REFRESH_TOKEN_SECRET,
