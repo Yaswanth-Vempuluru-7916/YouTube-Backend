@@ -12,7 +12,7 @@ const generateAccessAndRefreshTokens= async (userId)=>{
         const refreshToken = user.generateAccessToken()
 
         user.refreshToken = refreshToken
-        await user.save({validateBeforeSave : false})
+        await user.save({validateBeforeSave : false}) //password kooda required kadha but refresh token save chesetappudu validation cheyyodhhu
 
         return {accessToken,refreshToken}
         
@@ -130,7 +130,7 @@ const loginUser = asyncHandler(async(req,res)=>{
 
     const {refreshToken , accessToken} = await generateAccessAndRefreshTokens(user._id);
 
-    //cookies 
+    // //!Cookies 
 
     const loggedInUser = await User.findById(user._id).select("-password -refreshToken")
     // for cookies
